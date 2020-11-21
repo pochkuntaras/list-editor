@@ -1,15 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import { Provider } from 'react-redux';
+import store from 'store';
+
 import { AppContainer } from 'react-hot-loader';
 import App from './App';
 
+import Items from 'components/Items';
+
 ReactDOM.render(
-  <AppContainer>
-    <App>
-      <h1>Getting Started</h1>
-    </App>
-  </AppContainer>,
+  <Provider store={store}>
+    <AppContainer>
+      <App>
+        <h1>A Nested List Editor</h1>
+        <Items />
+      </App>
+    </AppContainer>
+  </Provider>,
   document.getElementById('root')
 );
 
