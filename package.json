@@ -1,0 +1,19 @@
+{
+  "name": "list-editor",
+  "version": "1.0.0",
+  "description": "The list editor implementation.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pochkuntaras/list-editor.git"
+  },
+  "author": "Taras Pochkun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pochkuntaras/list-editor/issues"
+  },
+  "homepage": "https://github.com/pochkuntaras/list-editor#readme"
+}
