@@ -29,7 +29,7 @@ class NewItem extends Component {
       set(
         assign({}, this.state),
         ['form', 'values', 'name'],
-        e.target.value
+        e.target.value,
       )
     );
   }
@@ -41,6 +41,14 @@ class NewItem extends Component {
     const { form } = this.state;
 
     action(form.values.name);
+
+    this.setState(
+      set(
+        assign({}, this.state),
+        ['form', 'values', 'name'],
+        '',
+      )
+    );
   }
 
   render() {
@@ -62,7 +70,7 @@ class NewItem extends Component {
 }
 
 NewItem.propTypes = {
-  action: PropTypes.func.isRequired
+  action: PropTypes.func.isRequired,
 };
 
 export default NewItem;

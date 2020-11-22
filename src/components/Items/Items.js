@@ -1,14 +1,9 @@
 import React from 'react';
 
+import Item from 'components/Item';
 import NewItem from 'components/NewItem';
 
 import { map } from 'lodash';
-
-const Item = ({ id, name }) => (
-  <li>
-    <span>{name}</span>
-  </li>
-);
 
 const Items = ({ items }) => (
   <ul>
