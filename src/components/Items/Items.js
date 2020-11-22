@@ -7,7 +7,14 @@ import { map } from 'lodash';
 
 const Items = ({ items }) => (
   <ul>
-    {map(items, (item) => <Item key={item.id} {...item} />)}
+    {map(items, (item) => (
+      <Item
+        key={item.id}
+        showMoveItemUp={item !== items[0]}
+        showMoveItemDown={item !== items[items.length - 1]}
+        {...item}
+      />
+    ))}
     <li><NewItem /></li>
   </ul>
 );
