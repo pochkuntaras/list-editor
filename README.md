@@ -1,6 +1,6 @@
-# The stories.
+# A Nested List Editor.
 
-The simple application for saving your stories.
+The simple application for saving your tasks.
 
 ## Installation
 

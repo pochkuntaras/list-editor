@@ -13,7 +13,9 @@ ReactDOM.render(
   <Provider store={store}>
     <AppContainer>
       <App>
-        <h1>A Nested List Editor</h1>
+        <h1 style={{ margin: '20px', fontFamily: 'Arial, sans-serif', fontSize: '26px' }}>
+          A Nested List Editor
+        </h1>
         <Items />
       </App>
     </AppContainer>

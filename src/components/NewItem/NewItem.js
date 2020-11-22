@@ -37,10 +37,10 @@ class NewItem extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    const { action } = this.props;
-    const { form } = this.state;
+    const { action, parentId } = this.props;
+    const { name } = this.state.form.values;
 
-    action(form.values.name);
+    action({ name, parentId });
 
     this.setState(
       set(
@@ -55,16 +55,18 @@ class NewItem extends Component {
     const { form } = this.state;
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <TextField
-          type="text"
-          name="name"
-          value={form.values.name}
-          placeholder="New Item"
-          onChange={this.handleChange}
-        />
-        <Button type="submit">Add</Button>
-      </form>
+      <li>
+        <form onSubmit={this.handleSubmit}>
+          <TextField
+            type="text"
+            name="name"
+            value={form.values.name}
+            placeholder="New Item"
+            onChange={this.handleChange}
+          />
+          <Button type="submit">Add</Button>
+        </form>
+      </li>
     );
   }
 }

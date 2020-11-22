@@ -3,15 +3,21 @@ import { flowRight } from 'lodash';
 
 import Item from './Item';
 
-import { removeItem, moveItemUp, moveItemDown } from 'actions/Item';
+import {
+  moveItemUp,
+  moveItemDown,
+  addSublist,
+  removeItem
+} from 'actions/Item';
 
 const stateToProps = (state) => ({
 });
 
 const actionsToProps = (dispatch) => ({
-  remove: flowRight(dispatch, removeItem),
   moveItemUp: flowRight(dispatch, moveItemUp),
   moveItemDown: flowRight(dispatch, moveItemDown),
+  addSublist: flowRight(dispatch, addSublist),
+  remove: flowRight(dispatch, removeItem),
 });
 
 export default connect(stateToProps, actionsToProps)(Item);

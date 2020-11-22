@@ -4,37 +4,46 @@ import PropTypes from 'prop-types';
 import Button from 'components/shared/Button';
 import TextBox from 'components/shared/TextBox';
 
+import Items from 'components/Items';
+
 const Item = ({
   id,
+  parentId,
   name,
-  remove,
   moveItemUp,
   moveItemDown,
-  showMoveItemUp,
-  showMoveItemDown,
+  first,
+  last,
+  addSublist,
+  newSublist,
+  remove,
 }) => (
     <li>
       <TextBox>{name}</TextBox>
-      { showMoveItemUp && <Button onClick={() => moveItemUp(id)}>&uarr;</Button>}
-      { showMoveItemDown && <Button onClick={() => moveItemDown(id)}>&darr;</Button>}
+      {first && <Button onClick={() => moveItemUp({ id, parentId })}>&uarr;</Button>}
+      {last && <Button onClick={() => moveItemDown({ id, parentId })}>&darr;</Button>}
+      <Button onClick={() => addSublist(id)}>Add Sublist</Button>
       <Button color="red" onClick={() => remove(id)}>Remove</Button>
+      <Items parentId={id} newSublist={newSublist} />
     </li>
-  );
+  )
 
 Item.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.number.isRequired,
+  parentId: PropTypes.number,
   name: PropTypes.string.isRequired,
   remove: PropTypes.func,
   moveItemUp: PropTypes.func,
   moveItemDown: PropTypes.func,
-  showMoveItemUp: PropTypes.bool,
-  showMoveItemDown: PropTypes.bool,
+  first: PropTypes.bool,
+  last: PropTypes.bool,
 };
 
 Item.defaultProps = {
   name: '',
-  showMoveItemUp: false,
-  showMoveItemDown: false,
+  parentId: null,
+  first: false,
+  last: false,
 };
 
 export default Item;
