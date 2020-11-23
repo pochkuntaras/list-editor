@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>List editor</title>
+    <% if (__PRODUCTION__) { %>
+      <link rel="stylesheet" type="text/css" href="/<%- webpackAsset('bundle', 'css') %>" />
+    <% } %>
+  </head>
+  <body>
+    <div id="root"></div>
+    <% if (__PRODUCTION__) { %>
+      <script src="/<%- webpackAsset('vendor', 'js') %>"></script>
+    <% } %>
+    <script src="/<%- webpackAsset('bundle', 'js') %>"></script>
+  </body>
+</html>
