@@ -10,23 +10,23 @@ const Items = ({ items, parentId, newSublist }) => {
 
   return (
     <ul>
-      { map(subItems, (item) => (
-        <Item
-          key={item.id}
-          parentId={parentId}
-          first={item !== subItems[0]}
-          last={item !== subItems[subItems.length - 1]}
-          {...item}
-        />
-      ))}
-      { newSublist && <NewItem parentId={parentId} /> }
+      {
+        map(subItems, (item) => {
+          const first = item !== subItems[0];
+          const last = item !== subItems[subItems.length - 1];
+          const hasSublist = !!filter(items, { parentId: item.id }).length;
+
+          return <Item key={item.id} {...{parentId, first, last, hasSublist, ...item}} />
+        })
+      }
+      { newSublist && <NewItem parentId={parentId} />}
     </ul>
   );
 }
 
 Items.defaultProps = {
   parentId: null,
-  newSublist: true
+  newSublist: true,
 };
 
 export default Items;

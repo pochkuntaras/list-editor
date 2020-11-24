@@ -21,3 +21,8 @@ export const addSublist = (id) => ({
   type: types.ADD_SUBLIT,
   id,
 });
+
+export const removeSublist = (sublistId) => ({
+  type: types.REMOVE_SUBLIT,
+  sublistId,
+});

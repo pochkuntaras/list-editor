@@ -43,6 +43,15 @@ const removeItem = (items, id) => {
   return items;
 }
 
+const removeSublist = (items, sublistId) => {
+  forEach(filter(items, { parentId: sublistId }), (item) => {
+    items.splice(findIndex(items, { id: item.id }), 1);
+    removeSublist(items, item.id);
+  });
+
+  return items;
+}
+
 const moveItem = (items, id, parentId, direction = 'down') => {
   const subItems = filter(items, { parentId });
 
@@ -82,18 +91,21 @@ const addSublist = (items, id) => {
 
 export default function (state = initialState, action) {
   const items = cloneDeep(state);
+  const { id, parentId, sublistId, name } = action;
 
   switch (action.type) {
     case types.ADD_ITEM:
-      return addItem(items, action.name, action.parentId);
+      return addItem(items, name, parentId);
     case types.REMOVE_ITEM:
-      return removeItem(items, action.id);
+      return removeItem(items, id);
     case types.MOVE_ITEM_UP:
-      return moveItem(items, action.id, action.parentId, 'up');
+      return moveItem(items, id, parentId, 'up');
     case types.MOVE_ITEM_DOWN:
-      return moveItem(items, action.id, action.parentId);
+      return moveItem(items, id, parentId);
     case types.ADD_SUBLIT:
-      return addSublist(items, action.id)
+      return addSublist(items, id);
+    case types.REMOVE_SUBLIT:
+      return removeSublist(items, sublistId);
     default:
       return state;
   }

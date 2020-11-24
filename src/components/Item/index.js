@@ -7,6 +7,7 @@ import {
   moveItemUp,
   moveItemDown,
   addSublist,
+  removeSublist,
   removeItem
 } from 'actions/Item';
 
@@ -17,6 +18,7 @@ const actionsToProps = (dispatch) => ({
   moveItemUp: flowRight(dispatch, moveItemUp),
   moveItemDown: flowRight(dispatch, moveItemDown),
   addSublist: flowRight(dispatch, addSublist),
+  removeSublist: flowRight(dispatch, removeSublist),
   remove: flowRight(dispatch, removeItem),
 });
 
